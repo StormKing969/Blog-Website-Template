@@ -1,6 +1,64 @@
 let toggle = document.querySelector("#header .toggle-button");
 let collapse = document.querySelectorAll("#header .collapse");
 
-toggle.addEventListener('click', function(){
-  collapse.forEach(col=>col.classList.toggle("collapse-toggle"))
+toggle.addEventListener('click', function() {
+  collapse.forEach(col => col.classList.toggle("collapse-toggle"))
 })
+
+// Using Masonary
+new Masonry("#posts .grid", {
+  itemSelector: '.grid-item',
+  gutter: 20
+});
+
+// Swiper Slider Library
+new Swiper('.swiper-container', {
+  direction: 'horizontal',
+  loop: true,
+  slidesPerView: 5,
+  autoplay: {
+    delay: 3000
+  },
+
+  // responsive breakpoints
+  breakpoints: {
+    '@0': {
+      slidesPerView: 2
+    },
+
+    // viewpoint >888px
+    '@1.00': {
+      slidesPerView: 3
+    },
+
+    // viewpoint >1100px
+    '@1.25': {
+      slidesPerView: 4
+    },
+
+    // viewpoint >1330px
+    '@1.50': {
+      slidesPerView: 5
+    }
+  }
+})
+
+// Sticky Navigation
+window.onscroll = function() {
+  myFunction()
+};
+
+// get the current value
+let navbar = document.getElementById("header");
+
+// get the navbar position
+let sticky = navbar.offsetTop;
+
+// sticky function
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
